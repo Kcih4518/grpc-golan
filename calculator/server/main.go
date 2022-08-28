@@ -24,7 +24,7 @@ func main() {
 
 	grpcServer := grpc.NewServer()
 
-	// pb.RegisterCalculatorServiceServer(grpcServer, &Server{})
+	pb.RegisterCalculatorServiceServer(grpcServer, &Server{})
 
 	if err = grpcServer.Serve(lst); err != nil {
 		log.Fatalf("Failed to serve: %v\n", err)

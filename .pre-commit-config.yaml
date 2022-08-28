@@ -1,5 +1,6 @@
 repos:
   - repo: https://github.com/golangci/golangci-lint
-    rev: v1.49.0
+    rev: v1.42.0
     hooks:
       - id: golangci-lint
+        entry: golangci-lint run -c .golangci.yml --fix
