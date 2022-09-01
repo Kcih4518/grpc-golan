@@ -6,6 +6,7 @@ import (
 
 	pb "github.com/Kcih4518/grpc-golan/calculator/proto"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 )
 
 var addr string = "0.0.0.0:50051"
@@ -19,10 +20,23 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to listen: %v\n", err)
 	}
-
+	defer lst.Close()
 	log.Printf("Listening on %s\n", addr)
 
-	grpcServer := grpc.NewServer()
+	opts := []grpc.ServerOption{}
+	tls := true
+
+	if tls {
+		certFile := "ssl/server.crt"
+		keyFile := "ssl/server.pem"
+		creds, err := credentials.NewServerTLSFromFile(certFile, keyFile)
+		if err != nil {
+			log.Fatalf("Failed loading certificates: %v\n", err)
+		}
+		opts = append(opts, grpc.Creds(creds))
+	}
+
+	grpcServer := grpc.NewServer(opts...)
 
 	pb.RegisterCalculatorServiceServer(grpcServer, &Server{})
 
