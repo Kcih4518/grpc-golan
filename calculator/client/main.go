@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"time"
 
 	pb "github.com/Kcih4518/grpc-golan/calculator/proto"
 	"google.golang.org/grpc"
@@ -22,5 +23,6 @@ func main() {
 	// doPrimes(c)
 	// doAvg(c)
 	// doMax(c)
-	doSqrt(c, -10)
+	// doSqrt(c, -10)
+	doSumWithDeadline(c, 2*time.Second)
 }
