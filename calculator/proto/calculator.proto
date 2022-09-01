@@ -15,5 +15,6 @@ service CalculatorService {
   rpc Avg(stream AvgRequest) returns (AvgResponse);
   rpc Max(stream MaxRequest) returns (stream MaxResponse);
   rpc Sqrt(SqrtRequest) returns (SqrtResponse);
+  rpc SumWithDeadline(SumRequest) returns (SumResponse);
 };
 
