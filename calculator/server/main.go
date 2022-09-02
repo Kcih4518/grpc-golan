@@ -7,6 +7,7 @@ import (
 	pb "github.com/Kcih4518/grpc-golan/calculator/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
+	"google.golang.org/grpc/reflection"
 )
 
 var addr string = "0.0.0.0:50051"
@@ -24,7 +25,7 @@ func main() {
 	log.Printf("Listening on %s\n", addr)
 
 	opts := []grpc.ServerOption{}
-	tls := true
+	tls := false
 
 	if tls {
 		certFile := "ssl/server.crt"
@@ -39,6 +40,7 @@ func main() {
 	grpcServer := grpc.NewServer(opts...)
 
 	pb.RegisterCalculatorServiceServer(grpcServer, &Server{})
+	reflection.Register(grpcServer)
 
 	if err = grpcServer.Serve(lst); err != nil {
 		log.Fatalf("Failed to serve: %v\n", err)
