@@ -3,6 +3,7 @@ module github.com/Kcih4518/grpc-golan
 go 1.19
 
 require (
+	go.mongodb.org/mongo-driver v1.10.1
 	google.golang.org/grpc v1.49.0
 	google.golang.org/protobuf v1.28.1
 )
