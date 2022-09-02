@@ -15,3 +15,11 @@ message Blog {
 message BlogId {
   string id = 1;
 }
+
+service BlogService {
+ rpc CreateBlog(Blog) returns (BlogId);
+ rpc ReadBlog (BlogId) returns (Blog);
+ rpc UpdateBlog (BlogId) returns (google.protobuf.Empty);
+ rpc DeleteBlog (BlogId) returns (google.protobuf.Empty);
+ rpc ListBlogs (google.protobuf.Empty) returns (stream Blog);
+}
