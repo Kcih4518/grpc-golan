@@ -2,6 +2,7 @@ run:
   timeout: 30m
   skip-files:
     - "^zz_generated.*"
+    - "list.go"
 
 issues:
   max-same-issues: 0
