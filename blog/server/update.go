@@ -12,7 +12,7 @@ import (
 	"google.golang.org/protobuf/types/known/emptypb"
 )
 
-func (*Server) UpdateBlog(ctx context.Context, in *pb.Blog) (*emptypb.Empty, error) {
+func (s *Server) UpdateBlog(ctx context.Context, in *pb.Blog) (*emptypb.Empty, error) {
 	log.Printf("UpdateBlog was invoked with %v\n", in)
 
 	oid, err := primitive.ObjectIDFromHex(in.Id)
