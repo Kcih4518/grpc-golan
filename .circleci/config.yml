@@ -21,7 +21,7 @@ jobs:
     steps:
       - checkout
       - print_pipeline_id
-      - run: return 1
+      - run: exit 1
       - run:
           name: Upload Failed Tests
           command: echo "Hey just a joke!"
