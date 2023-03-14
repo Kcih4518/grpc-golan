@@ -21,6 +21,12 @@ jobs:
     steps:
       - checkout
       - print_pipeline_id
+      - run: return 1
+      - run:
+          name: Upload Failed Tests
+          command: echo "Hey just a joke!"
+          when: on_fail
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
